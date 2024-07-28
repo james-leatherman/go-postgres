@@ -8,9 +8,11 @@ import (
 
 	_ "github.com/lib/pq"
 
-	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
-	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
+    "gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
+	fibertrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/gofiber/fiber.v2"
+
+    "github.com/gofiber/fiber/v2"
 )
 
 func indexHandler(c *fiber.Ctx, db *sql.DB) error {
@@ -84,6 +86,8 @@ func main() {
 	app := fiber.New(fiber.Config{
 		Views: engine,
 	})
+
+    app.Use(fibertrace.Middleware())
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return indexHandler(c, db)
