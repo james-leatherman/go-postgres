@@ -72,7 +72,7 @@ func main() {
         tracer.WithAgentAddr("datadog-agent:8126"),
 		tracer.WithEnv("dev"),
 		tracer.WithService("todos"),
-		tracer.WithServiceVersion("1.0"),
+		tracer.WithServiceVersion("1.1"),
 	)
 	defer tracer.Stop()
     
@@ -110,5 +110,6 @@ func main() {
 		port = "3000"
 	}
 	app.Static("/", "./public")
+	app.Static("/", "./views")
 	log.Fatalln(app.Listen(fmt.Sprintf(":%v", port)))
 }
