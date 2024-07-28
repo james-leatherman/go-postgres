@@ -73,6 +73,7 @@ func main() {
 		tracer.WithServiceVersion("1.0"),
 	)
 	defer tracer.Stop()
+    
 	connStr := "postgresql://postgres:postgres@localhost/todos?sslmode=disable"
 	// Connect to database
 	db, err := sql.Open("postgres", connStr)
