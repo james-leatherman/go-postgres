@@ -33,6 +33,19 @@ services:
       # Ensure that the variables in .env match the same variables in devcontainer.json
       - .env
 
-
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
+
+  datadog-agent:
+    container_name: datadog-agent
+    image: "gcr.io/datadoghq/agent:latest"
+    pid: host
+    environment:
+      - DD_API_KEY=0f6fe13f4df37deb4943419baf5740c8
+      - DD_APM_ENABLED=true
+      - DD_APM_NON_LOCAL_TRAFFIC=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
+   
