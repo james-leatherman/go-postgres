@@ -45,6 +45,8 @@ services:
       - DD_APM_ENABLED=true
       - DD_APM_NON_LOCAL_TRAFFIC=true
       - DD_SITE=us5.datadoghq.com
+      - DD_GIT_REPOSITORY_URL=${DD_GIT_REPOSITORY_URL} 
+      - DD_GIT_COMMIT_SHA=${DD_GIT_COMMIT_SHA}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /proc/:/host/proc/:ro
