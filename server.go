@@ -66,7 +66,12 @@ func deleteHandler(c *fiber.Ctx, db *sql.DB) error {
 }
 
 func main() {
-	tracer.Start()
+	tracer.Start(
+        tracer.WithAgentAddr("datadog-agent:8126"),
+		tracer.WithEnv("dev"),
+		tracer.WithService("todos"),
+		tracer.WithServiceVersion("1.0"),
+	)
 	defer tracer.Stop()
 	connStr := "postgresql://postgres:postgres@localhost/todos?sslmode=disable"
 	// Connect to database
