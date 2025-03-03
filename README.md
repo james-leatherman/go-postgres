@@ -1,6 +1,6 @@
 # Go Postgres
 
-This is a simple Todo List application built using Go, Fiber, and PostgreSQL. The application demonstrates basic CRUD operations and integrates with DataDog for tracing.
+This is a simple Todo List application built using Go, Fiber, and PostgreSQL. The application demonstrates basic CRUD operations and integrates with Datadog for tracing.
 
 ## Features
 
